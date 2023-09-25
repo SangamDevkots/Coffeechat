@@ -5,6 +5,7 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import app from '../Firebase/Firebase';
 import backgroundImage from '../assets/bchat.png';
 
+
 const SignIn = () => {
   const navigate = useNavigate(); 
 
