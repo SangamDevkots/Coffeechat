@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react'; t
 import { Link, useNavigate } from 'react-router-dom'; 
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import app from '../Firebase/Firebase';
 import backgroundImage from '../assets/bchat.png';
-
+import AuthContext from '../AuthContext/AuthContext';
 
 const SignIn = () => {
+  const [user, setUser] = useState(null); 
   const navigate = useNavigate(); 
-
-  const [user , setUser] = useState(null)
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
@@ -18,7 +17,6 @@ const SignIn = () => {
       navigate('/chats'); 
     }
   }, [navigate]);
-  
 
   const signInWithGoogle = async () => {
     const auth = getAuth(app);
@@ -29,8 +27,7 @@ const SignIn = () => {
       console.log('Successfully signed in with Google', result.user);
 
       localStorage.setItem('user', JSON.stringify(result.user));
-
-      setUser(result.user);
+      setUser(result.user); 
 
       const userRef = doc(fireauth, 'users', result.user.uid);
       const userData = {
@@ -40,14 +37,10 @@ const SignIn = () => {
       };
       await setDoc(userRef, userData);
       navigate('/chats'); 
-
-     
     } catch (error) {
       console.error('Error signing in with Google', error);
     }
   };
-
-
 
   const backgroundStyles = {
     backgroundImage: `url(${backgroundImage})`,
