@@ -15,8 +15,10 @@ const SignIn = () => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       setUser(JSON.parse(savedUser));
+      navigate('/chats'); 
     }
-  }, []);
+  }, [navigate]);
+  
 
   const signInWithGoogle = async () => {
     const auth = getAuth(app);
@@ -26,7 +28,6 @@ const SignIn = () => {
       const result = await signInWithPopup(auth, provider);
       console.log('Successfully signed in with Google', result.user);
 
-      // Save user data to local storage
       localStorage.setItem('user', JSON.stringify(result.user));
 
       setUser(result.user);
@@ -38,9 +39,9 @@ const SignIn = () => {
         photoURL: result.user.photoURL,
       };
       await setDoc(userRef, userData);
-
-
       navigate('/chats'); 
+
+     
     } catch (error) {
       console.error('Error signing in with Google', error);
     }
@@ -59,7 +60,7 @@ const SignIn = () => {
     <div className="min-h-screen flex items-center justify-center" style={backgroundStyles}>
       <div className="flex">
         <div className="w-1/2 bg-blue-500">
-          <img src="https://media1.giphy.com/media/hryis7A55UXZNCUTNA/giphy.gif" alt="" className="h-full object-cover" />
+          <img src="https://media4.giphy.com/media/13GIgrGdslD9oQ/giphy.gif" alt="" className="h-full object-cover" />
         </div>
 
         <div className="w-1/2 bg-white p-8 rounded-lg shadow-lg">
