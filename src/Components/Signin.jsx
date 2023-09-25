@@ -4,23 +4,19 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import app from '../Firebase/Firebase';
 import backgroundImage from '../assets/bchat.png';
-import AuthContext from '../AuthContext/AuthContext';
-
 
 
 const SignIn = () => {
-  const user = useContext(AuthContext);
   const navigate = useNavigate(); 
 
-
+  const [user , setUser] = useState(null)
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       setUser(JSON.parse(savedUser));
-      navigate('/chats'); 
     }
-  }, [navigate]);
+  }, []);
   
 
   const signInWithGoogle = async () => {
