@@ -45,7 +45,7 @@ const SignIn = () => {
       console.error('Error signing in with Google', error);
     }
   };
-
+console.log(user)
 
 
   const backgroundStyles = {
@@ -77,6 +77,7 @@ const SignIn = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
