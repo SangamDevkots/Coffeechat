@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
 import ChatMessage from './ChatMessage';
 import NavBar from './NavBar';
 import Input from './Input';
+import AuthContext from '../AuthContext/AuthContext';
+
 
 const Chatbox = () => {
+
   const [messages, setMessages] = useState([]);
 
   const handleSendMessage = (newMessage) => {
