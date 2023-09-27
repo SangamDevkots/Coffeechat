@@ -4,7 +4,7 @@ import ActiveConversation from './ActiveConversation';
 import { BsToggleOn } from 'react-icons/bs';
 
 const Sidebar = () => {
-  const user = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
 console.log(user)
   return (
     <div className="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">

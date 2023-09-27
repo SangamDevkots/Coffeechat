@@ -1,11 +1,12 @@
 import React from 'react'
-
+import AuthContext from '../AuthContext/AuthContext';
 const Begining = () => {
+  const {user} = useContext(AuthContext);
   return (
     <div className=' mx-auto my-16 '>
           <div className=" h-40 w-40 rounded-full border overflow-hidden ">
           <img 
-            src="https://images.hellomagazine.com/horizon/square/2a1b6ecec4ae-cristiano-ronaldo-toned-torso-sauna-selfie-t.jpg"
+            src= {user.photoURL}
             alt="Avatar"
             className="h-full w-full "
           />
