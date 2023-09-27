@@ -1,18 +1,11 @@
 import React, { useContext } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
 import ActiveConversation from './ActiveConversation';
-
 const Sidebar = () => {
   const user = useContext(AuthContext);
 
 
-  if (!user || !user.displayName || !user.photoURL) {
-    return (
-      <div className="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
-        <p>Loading user data...</p>
-      </div>
-    );
-  }
+
 
   return (
     <div className="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
@@ -23,7 +16,8 @@ const Sidebar = () => {
             alt=""
           />
         </div>
-        <div className="ml-2 font-bold text-2xl">coffeechat</div>
+        <div className="ml-2 font-bold text-2xl">coffeechat         </div>
+
       </div>
 
       <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg">

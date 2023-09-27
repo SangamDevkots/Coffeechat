@@ -25,12 +25,14 @@ const Input = ({ onSendMessage }) => {
       </div>
       <div className="flex-grow ml-4">
         <div className="relative w-full">
-          <input
-            type="text"
-            value={text}
-            onChange={handleInputChange}
-            className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
-          />
+        <input
+  type="text"
+  value={text}
+  onChange={handleInputChange}
+  className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+  autoFocus
+
+/>
         </div>
       </div>
       <div className="ml-4">
