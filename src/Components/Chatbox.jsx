@@ -21,7 +21,7 @@ const Chatbox = () => {
             <NavBar />
             <div className="grid grid-cols-12 gap-y-2">
               {messages.map((message, index) => (
-                <ChatMessage key={index} sender={message.sender} message={message.text} />
+                <ChatMessage key={index} sender={message.sender} message={message.text}  photo={message.photo}/>
               ))}
             </div>
           </div>

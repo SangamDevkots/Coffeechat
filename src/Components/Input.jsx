@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import { useAuth } from '../AuthContext/AuthContext';
 const Input = ({ onSendMessage }) => {
+  const { user } = useAuth()
   const [text, setText] = useState('');
 
   const handleInputChange = (e) => {
@@ -9,7 +10,7 @@ const Input = ({ onSendMessage }) => {
 
   const handleSubmit = () => {
     if (text.trim() !== '') {
-      onSendMessage({ sender: 'User', text });
+      onSendMessage({ sender: `${user.displayName}`, text , photo: `${user.photoURL}` });
       setText('');
     }
   };
