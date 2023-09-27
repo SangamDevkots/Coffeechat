@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
 import ActiveConversation from './ActiveConversation';
 import { BsToggleOn } from 'react-icons/bs';
+import { useAuth } from '../AuthContext/AuthContext';
 
 const Sidebar = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useAuth()
+
 console.log(user)
   return (
     <div className="flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
@@ -20,9 +22,9 @@ console.log(user)
 
       <div className="flex flex-col items-center bg-indigo-100 border border-gray-200 mt-4 w-full py-6 px-4 rounded-lg">
         <div className="h-20 w-20 rounded-full border overflow-hidden">
-          <img src={user.photoURL} alt="Avatar" className="h-full w-full" />
+         <img src={user.photoURL} alt="Avatar" className="h-full w-full" /> 
         </div>
-        <div className="text-sm font-semibold mt-2">{user.displayName}</div>
+         <div className="text-sm font-semibold mt-2">{user.displayName}</div> 
         <div className="text-xs text-gray-500">Football player</div>
         <div className="flex flex-row items-center mt-3">
           <div className="flex flex-col justify-center h-4 w-8 bg-indigo-500 rounded-full">

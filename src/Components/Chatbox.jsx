@@ -8,7 +8,7 @@ import AuthContext from '../AuthContext/AuthContext';
 const Chatbox = () => {
 
   const [messages, setMessages] = useState([]);
-
+ 
   const handleSendMessage = (newMessage) => {
     setMessages([...messages, newMessage]);
   };
