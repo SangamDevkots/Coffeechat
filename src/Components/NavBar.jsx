@@ -1,6 +1,6 @@
 import React from 'react'
 import Begining from './Begining';
-const NavBar = () => {
+const NavBar = ({name}) => {
   return (
 <>
 
@@ -11,8 +11,8 @@ const NavBar = () => {
 
 
     <li>
-      <h1>community chat</h1>
-      <p>100 people online</p>
+      <h1>{name}</h1>
+      <p>Online</p>
     </li>
   </ul>
 

@@ -50,9 +50,10 @@ console.log(user)
           <span className="font-bold">Suggested accounts</span>
           <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">7</span>
         </div>
-        <div className="flex flex-col space-y-1 mt-4 -mx-2">
+        <div className="flex flex-col space-y-1 mt-4 -mx-2 overflow-scroll">
     
-<SuggestedAccount  />
+<SuggestedAccount 
+  />
         </div>
       </div>
     </div>
