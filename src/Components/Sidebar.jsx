@@ -3,6 +3,7 @@ import AuthContext from '../AuthContext/AuthContext';
 import ActiveConversation from './ActiveConversation';
 import { BsToggleOn } from 'react-icons/bs';
 import { useAuth } from '../AuthContext/AuthContext';
+import SuggestedAccount from './SuggestedAccount';
 const dynamicName = "Dynamic Name"; 
 const Sidebar = () => {
   const { user } = useAuth()
@@ -50,8 +51,8 @@ console.log(user)
           <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">7</span>
         </div>
         <div className="flex flex-col space-y-1 mt-4 -mx-2">
-        <ActiveConversation name={dynamicName} />
-
+    
+<SuggestedAccount  />
         </div>
       </div>
     </div>
