@@ -1,16 +1,15 @@
 import React from 'react';
 
-const ChatMessage = ({ sender, message  }) => {
+const ChatMessage = ({ sender, message, photo }) => {
   return (
-    <div className="col-start-1 col-end-8 p-3 rounded-lg">
-      {sender}
-      <div className="flex flex-row items-center">
-        <div className="relative ml-3 text-sm   bg-blue-400 text-gray-100 py-2 px-4 shadow rounded-xl">
+    <div className={`flex ${sender === 'User' ? 'justify-end' : 'justify-start'} items-center mb-4`}>
+      {sender !== 'User' && (
+        <div className="w-10 h-10 mr-2">
+          <img src={photo} alt={`${sender}'s Photo`} className="w-full h-full rounded-full" />
+        </div>
+      )}
+      <div className={`p-4 rounded-lg shadow-lg ${sender === 'User' ? 'bg-blue-400 text-white' : 'bg-gray-200'}`}>
         {message}
-        </div>
-        <div>
-     
-        </div>
       </div>
     </div>
   );

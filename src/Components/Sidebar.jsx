@@ -44,7 +44,8 @@ console.log(user)
           <span className="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">7</span>
         </div>
         <div className="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
-          <ActiveConversation name="Yogesh Kshetri" />
+        <SuggestedAccount 
+  />
         </div>
         <div className="flex flex-row items-center justify-between text-xs mt-6">
           <span className="font-bold">Suggested accounts</span>
@@ -52,8 +53,7 @@ console.log(user)
         </div>
         <div className="flex flex-col space-y-1 mt-4 -mx-2 overflow-scroll">
     
-<SuggestedAccount 
-  />
+
         </div>
       </div>
     </div>

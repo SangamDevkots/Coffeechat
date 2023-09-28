@@ -31,7 +31,9 @@ const Chatbox = () => {
   const handleSendMessage = (newMessage) => {
     setMessages([...messages, newMessage]);
   };
-console.log(messages)
+
+  console.log(messages);
+
   return (
     <div className="flex flex-col flex-auto h-full p-6">
       <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
@@ -52,6 +54,7 @@ console.log(messages)
                 <ChatMessage
                   key={message.id}
                   sender={message.sender}
+                  receiver={message.receiver}
                   message={message.text}
                   timestamp={message.createdAt} 
                   photo={message.photo}
@@ -65,5 +68,5 @@ console.log(messages)
     </div>
   );
 };
-       
+
 export default Chatbox;
