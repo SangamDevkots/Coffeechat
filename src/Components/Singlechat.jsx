@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import ChatMessage from './ChatMessage';
 import NavBar from './NavBar';
 import Input from './Input';
+import Sidebar from './Sidebar';
 
 const Singlechat = () => {
   const { id } = useParams();
@@ -36,7 +37,9 @@ const Singlechat = () => {
   }, []);
 
   return (
+  
     <div className="flex flex-col flex-auto h-full p-6">
+        
       <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
         <div className="flex flex-col h-full overflow-x-auto mb-4">
           <div className="flex flex-col h-full">
