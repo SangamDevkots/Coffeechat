@@ -1,34 +1,23 @@
-import PropTypes from "prop-types";
-const ChatMessage = ({ sender, message, photo }) => {
-	return (
-		<div
-			className={`flex ${
-				sender === "User" ? "justify-end" : "justify-start"
-			} items-center mb-4`}
-		>
-			{sender !== "User" && (
-				<div className='w-10 h-10 mr-2'>
-					<img
-						src={photo}
-						alt={`${sender}'s Photo`}
-						className='w-full h-full rounded-full'
-					/>
-				</div>
-			)}
-			<div
-				className={`p-4 rounded-lg shadow-lg ${
-					sender === "User" ? "bg-blue-400 text-white" : "bg-gray-200"
-				}`}
-			>
-				{message}
-			</div>
-		</div>
-	);
-};
-ChatMessage.propTypes = {
-	sender: PropTypes.string.isRequired,
-	message: PropTypes.string.isRequired,
-	photo: PropTypes.string.isRequired,
+import React from 'react';
+
+const ChatMessage = ({ sender, message,  photo , timestamp }) => {
+  return (
+    <div className="chat-message flex items-start mb-4">
+      <img
+        src={photo} 
+        alt={`${sender}'s photo`}
+        className="w-8 h-8 rounded-full mr-2"
+      />
+      <div>
+        <p className="font-semibold">{sender}</p>
+        <div className="bg-blue-200 p-2 rounded-lg shadow">
+          <p>{message}</p>
+        </div>
+        <p className="text-xs text-gray-500">{timestamp}</p> 
+      </div>
+    </div>
+  );
 };
 
 export default ChatMessage;
+
