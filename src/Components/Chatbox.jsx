@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   collection,
   query,
@@ -11,32 +11,26 @@ import Input from "./Input";
 
 const Chatbox = () => {
   const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     try {
-      const q = query(
-        collection(db, "messages")
-      );
+      const q = query(collection(db, "messages"));
 
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const fetchedMessages = [];
         querySnapshot.forEach((doc) => {
           fetchedMessages.push({ ...doc.data(), id: doc.id });
         });
-
-        // Call the function to set data here
-        updateMessages(fetchedMessages);
+        setMessages(fetchedMessages);
+        setLoading(false);
       });
 
       return () => unsubscribe();
     } catch (error) {
       console.error("Error fetching data: ", error);
+      setLoading(false);
     }
-  };
-
-  // Function to set data
-  const updateMessages = (newMessages) => {
-    setMessages(newMessages);
   };
 
   useEffect(() => {
@@ -45,7 +39,7 @@ const Chatbox = () => {
 
   const handleSendMessage = async (messageData) => {
     try {
-      const docRef = await addDoc(collection(db, "messages"), messageData);
+      await addDoc(collection(db, "messages"), messageData);
     } catch (error) {
       console.error("Error adding message: ", error);
     }
@@ -67,19 +61,24 @@ const Chatbox = () => {
               </div>
             </nav>
             <div className="messages-wrapper">
-              {messages.map((message) => (
-                <ChatMessage
-                  key={message.id}
-                  sender={message.sender ?? "User"}
-                  message={message.text ?? message.text}
-                  photo={message.photo ?? ""}
-                />
-              ))}
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                messages.map((message) => (
+                  <ChatMessage
+                    key={message.id}
+                    sender={message.sender || "User"}
+                    message={message.text}
+                    photo={message.photo || ""}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>
         <Input onSendMessage={handleSendMessage} />
       </div>
+
     </div>
   );
 };
