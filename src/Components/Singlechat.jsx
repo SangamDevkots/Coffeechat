@@ -46,7 +46,7 @@ const Singlechat = () => {
             <NavBar name={id}   />
             <div className="">
               {messages.map((message, index) => (
-                <ChatMessage key={index} sender={message.sender} message={message.text} photo={message.photo} />
+                <ChatMessage key={index} sender={message.sender} message={message.text} photo={message.photo}  name={id} />
               ))}
             </div>
           </div>

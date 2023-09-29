@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ChatMessage = ({ sender, message,  photo , timestamp }) => {
+import { NavLink } from 'react-router-dom';
+const ChatMessage = ({ sender, message,  photo , timestamp , name }) => {
   return (
     <div className="chat-message flex items-start mb-4">
       <img
@@ -9,7 +10,11 @@ const ChatMessage = ({ sender, message,  photo , timestamp }) => {
         className="w-8 h-8 rounded-full mr-2"
       />
       <div>
-        <p className="font-semibold">{sender}</p>
+        
+      <NavLink to={`/profile/${name}`}>
+      <p className="font-semibold">{sender}</p>
+            </NavLink>
+        
         <div className="bg-blue-200 p-2 rounded-lg shadow">
           <p>{message}</p>
         </div>
