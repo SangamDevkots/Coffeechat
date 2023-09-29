@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import {
   collection,
   query,
-  orderBy,
   onSnapshot,
-  limit,
   addDoc,
 } from "firebase/firestore";
 import { db } from "../Firebase/Firebase";
@@ -14,34 +12,40 @@ import Input from "./Input";
 const Chatbox = () => {
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    const q = query(
-      collection(db, "messages"),
-      orderBy("createdAt", "desc"),
-      limit(50)
-    );
-
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const fetchedMessages = [];
-      querySnapshot.forEach((doc) => {
-        fetchedMessages.push({ ...doc.data(), id: doc.id });
-      });
-      const sortedMessages = fetchedMessages.sort(
-        (a, b) => a.createdAt - b.createdAt
+  const fetchData = async () => {
+    try {
+      const q = query(
+        collection(db, "messages")
       );
-      setMessages(sortedMessages);
-    });
 
-    return () => unsubscribe();
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const fetchedMessages = [];
+        querySnapshot.forEach((doc) => {
+          fetchedMessages.push({ ...doc.data(), id: doc.id });
+        });
+
+        // Call the function to set data here
+        updateMessages(fetchedMessages);
+      });
+
+      return () => unsubscribe();
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
+  // Function to set data
+  const updateMessages = (newMessages) => {
+    setMessages(newMessages);
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   const handleSendMessage = async (messageData) => {
     try {
-   
       const docRef = await addDoc(collection(db, "messages"), messageData);
-
-   
-   setMessages([...messages, { ...messageData, id: docRef.id }]);
     } catch (error) {
       console.error("Error adding message: ", error);
     }
@@ -63,16 +67,14 @@ const Chatbox = () => {
               </div>
             </nav>
             <div className="messages-wrapper">
-
-{messages.map((message) => (
-  <ChatMessage
-    key={message.id}
-    sender={message.sender ?? "User"} 
-    message={message.text.text ?? message.text}
-    photo={message.photo ?? ""}
-  />
-))}
-
+              {messages.map((message) => (
+                <ChatMessage
+                  key={message.id}
+                  sender={message.sender ?? "User"}
+                  message={message.text ?? message.text}
+                  photo={message.photo ?? ""}
+                />
+              ))}
             </div>
           </div>
         </div>
