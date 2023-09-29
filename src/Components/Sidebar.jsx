@@ -48,21 +48,20 @@ const Sidebar = () => {
 
       <div className="mt-4 sm:mt-8">
         <div className="text-xs font-bold text-gray-600 mb-2">Text to strangers (100 online)</div>
-       
-    
         <div className="">
-        <input
-              type="search"
-              placeholder="Search Active Conversations"
-              className="border border-gray-300 px-3 py-3 rounded-full focus:outline-none focus:border-indigo-500 w-full"
-            />
-
-
+          <input
+            type="search"
+            placeholder="Search Active Conversations"
+            className="border border-gray-300 px-3 py-3 rounded-full focus:outline-none focus:border-indigo-500 w-full"
+          />
         </div>
         <div className="mt-4">
           <div className="text-xs font-bold text-gray-600 mb-2">Active accounts</div>
-          <div className="space-y-1">
-            <SuggestedAccount />
+          <div className="h-60 overflow-y-auto"> {/* Set the desired height and make it scrollable */}
+            <div className="space-y-1">
+              <SuggestedAccount />
+              {/* Add more SuggestedAccount components if needed */}
+            </div>
           </div>
         </div>
       </div>

@@ -26,8 +26,8 @@ const Info = () => {
         <div className="bg-gray-200 rounded-full h-20 w-20 mx-auto">
           {/* <img src={user.photoURL} alt="Avatar" className="h-full w-full rounded-full" /> */}
         </div>
-      <div className="text-sm font-semibold mt-2">user profile</div>
-        <div className="text-xs text-gray-500">user email</div>
+      <div className="text-sm font-semibold mt-2">General chat</div>
+        <div className="text-xs text-gray-500">Coffee chat community</div>
         <div className="flex items-center justify-center mt-2">
      
        

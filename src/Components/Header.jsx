@@ -9,8 +9,6 @@ const Header = () => {
         
         <Sidebar />
         <MainChatArea className="flex-grow md:flex-grow-0" />
-        <Info />
-   
       </div>
     </div>
   );
